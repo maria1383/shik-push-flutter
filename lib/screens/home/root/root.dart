@@ -40,7 +40,7 @@ class _RootScreenState extends State<RootScreen> {
         type: BottomNavigationBarType.fixed,
         selectedFontSize: 30,
         unselectedFontSize: 25,
-        backgroundColor: Colors.cyan.shade100,
+        backgroundColor: Colors.white,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
