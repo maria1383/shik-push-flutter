@@ -1,23 +1,18 @@
-
-
-
-
-
-import '../../../data/models/home.dart';
+part of 'home_bloc.dart';
 
 @immutable
 sealed class HomeState {}
 
 final class HomeInitial extends HomeState {}
-////
 
-class HomeSuccsess extends HomeState {
-  final HomeEntity homeEntity;
-  
-  var HomeEntity;
-  HomeSuccsess(this.HomeEntity, this.homeEntity);
+final class ErrorState extends HomeState {
+  String error;
+  ErrorState(this.error);
 }
 
-class HomeError extends HomeState {}
+final class LodingState extends HomeState {}
 
-class HomeLoading extends HomeState {}
+final class SuccessState extends HomeState {
+  HomeEntity homeInfo;
+  SuccessState(this.homeInfo);
+}
