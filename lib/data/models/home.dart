@@ -29,12 +29,12 @@ class HomeEntity {
 }
 
 class product {
-  int? id;
+  num? id;
   String? title;
-  int? price;
-  int? discountPrice;
+  num? price;
+  num? discountPrice;
   bool? hasDiscount;
-  int? discountPercent;
+  num? discountPercent;
   String? image;
 
  product(

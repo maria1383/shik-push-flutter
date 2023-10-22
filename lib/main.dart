@@ -22,16 +22,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "shik poush",
-      localizationsDelegates: [
+      localizationsDelegates: const[
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
-        Locale('fa'), // English
+      supportedLocales:const [
+        Locale('fa',"IR"), // English
         Locale('en'), // Spanish
       ],
-      locale: Locale("fa"),
+      locale: Locale("fa","IR"),
       theme: lightTheme(),
       home: RootScreen(),
     );

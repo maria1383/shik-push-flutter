@@ -6,13 +6,13 @@ sealed class HomeState {}
 final class HomeInitial extends HomeState {}
 
 final class ErrorState extends HomeState {
-  String error;
+  final String error;
   ErrorState(this.error);
 }
 
 final class LodingState extends HomeState {}
 
 final class SuccessState extends HomeState {
-  HomeEntity homeInfo;
-  SuccessState(this.homeInfo);
+  final HomeEntity homeEntity;
+  SuccessState(this.homeEntity);
 }
