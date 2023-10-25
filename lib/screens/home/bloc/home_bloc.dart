@@ -11,9 +11,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc(this._homeServices) : super(HomeInitial()) {
     on<HomeEvent>((event, emit) async {
       if (event is HomeScreenStarted) {
-        emit(LodingState());
-        var response = await _homeServices.getGneralInfo();
-        emit(SuccessState(response));
+        emit(LodingState());  
         try {
           var response = await _homeServices.getGneralInfo();
           emit(SuccessState(response));
