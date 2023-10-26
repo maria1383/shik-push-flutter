@@ -1,4 +1,3 @@
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -41,20 +40,34 @@ class _HoomeScreenState extends State<HoomeScreen> {
       body: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
           if (state is SuccessState) {
-            return Column(
-              children: [
-                CarouselSlider(
-                  options: CarouselOptions(
-                      height: 160.0,
-                      viewportFraction: 1,
-                      enlargeCenterPage: true,
-                      autoPlay: true),
-                  items: state.homeEntity.slides!.map((i) {
-                   
-                    return  CachedNetworkImage(imageUrl: "https://flutter.vesam24.com/${i.image}",);
-                  }).toList(),
-                ),
-              ],
+            return SingleChildScrollView(
+              padding: EdgeInsets.fromLTRB(16, 0, 16, 50),
+              child: Column(
+                children: [
+                  CarouselSlider(
+                    options: CarouselOptions(
+                        height: 160.0,
+                        viewportFraction: 1,
+                        enlargeCenterPage: true,
+                        autoPlay: true),
+                    items: state.homeEntity.slides!.map((i) {
+                      return ClipRRect(
+                        borderRadius: BorderRadiusDirectional.circular(12),
+                        child: CachedNetworkImage(
+                          imageUrl: "https://flutter.vesam24.com/${i.image}",
+                          fit: BoxFit.fill,
+                          placeholder: (context, url) => const Center(
+                            child: CupertinoActivityIndicator(),
+                          ),
+                          errorWidget: (context, url, error) => const Center(
+                            child: Icon(Icons.error),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
             );
           } else if (state is ErrorState) {
             return Center(

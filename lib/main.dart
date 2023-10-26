@@ -9,8 +9,10 @@ import 'package:shik_poush/them.dart';
 
 void main() {
   runApp(MultiBlocProvider(providers: [
-      BlocProvider(create: (context)=> HomeBloc(HomeServices()),),
-      // BlocProvider(create: (context)=> LoginBloc())
+    BlocProvider(
+      create: (context) => HomeBloc(HomeServices()),
+    ),
+    // BlocProvider(create: (context)=> LoginBloc())
   ], child: const MyApp()));
 }
 
@@ -22,16 +24,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "shik poush",
-      localizationsDelegates: const[
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales:const [
-        Locale('fa',"IR"), // English
+      supportedLocales: const [
+        Locale('fa', "IR"), // English
         Locale('en'), // Spanish
       ],
-      locale: Locale("fa","IR"),
+      locale: Locale("fa", "IR"),
       theme: lightTheme(),
       home: RootScreen(),
     );
