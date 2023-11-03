@@ -47,6 +47,35 @@ class _HoomeScreenState extends State<HoomeScreen> {
               child: Column(
                 children: [
                   homeSlider(state.homeEntity),
+                  Row(
+                    children: [
+                      Expanded(
+                          child: Text(
+                        "جدید ترین محصولات",
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: Colors.blue,
+                              fontSize: 30,
+                            ),
+                      )),
+                      TextButton(
+                          onPressed: () {},
+                          child: Row(
+                            children: [
+                              Text(
+                                "مشاهده همه",
+                                style: TextStyle(
+                                  fontSize: 30,
+                                ),
+                              ),
+                             const Icon(
+                                Icons.arrow_forward_ios,
+                                size: 16,
+                                color: Colors.blue,
+                              ),
+                            ],
+                          ))
+                    ],
+                  )
                 ],
               ),
             );
