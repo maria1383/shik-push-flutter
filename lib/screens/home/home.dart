@@ -47,44 +47,81 @@ class _HoomeScreenState extends State<HoomeScreen> {
               child: Column(
                 children: [
                   homeSlider(state.homeEntity),
-                  SizedBox(width: 300,
-                    child: Column(children: [
-                      Row(
+                  SizedBox(
+                    width: 300,
+                    child: Column(
                       children: [
-                        Expanded(
-                            child: Text(
-                          "جدید ترین محصولات",
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                color: Colors.blue,
-                                fontSize: 30,
-                              ),
-                        )),
-                        TextButton(
-                            onPressed: () {},
-                            child: Row(
-                              children: [
-                                Text(
-                                  "مشاهده همه",
-                                  style: TextStyle(
+                        Row(
+                          children: [
+                            Expanded(
+                                child: Text(
+                              "جدید ترین محصولات",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                    color: Colors.blue,
                                     fontSize: 30,
                                   ),
-                                ),
-                               const Icon(
-                                  Icons.arrow_forward_ios,
-                                  size: 16,
-                                  color: Colors.blue,
-                                ),
-                              ],
-                            ))
+                            )),
+                            TextButton(
+                                onPressed: () {},
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "مشاهده همه",
+                                      style: TextStyle(
+                                        fontSize: 30,
+                                      ),
+                                    ),
+                                    const Icon(
+                                      Icons.arrow_forward_ios,
+                                      size: 16,
+                                      color: Colors.blue,
+                                    ),
+                                  ],
+                                ))
+                          ],
+                        ),
+                        Expanded(
+                            child: ListView.builder(
+                          itemCount: state.homeEntity.news!.length,
+                          itemBuilder: (context, index) {
+                            var product = state.homeEntity.news![index];
+
+                            return SizedBox(
+                              width: 170,
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    width: 170,
+                                    height: 160,
+                                    child: CachedNetworkImage(
+                                      imageUrl:
+                                          "https://flutter.vesam24.com/${product.image}",
+                                      fit: BoxFit.cover,
+                                      placeholder: (context, url) =>
+                                          const Center(
+                                        child: CupertinoActivityIndicator(),
+                                      ),
+                                      errorWidget: (context, url, error) =>
+                                          const Icon(Icons.error),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                      width: 170,
+                                      child: Text(
+                                        product.title!,
+                                        overflow: TextOverflow.ellipsis,
+                                      )),
+                                ],
+                              ),
+                            );
+                          },
+                        )),
                       ],
                     ),
-                  Expanded(child: ListView.builder(
-                    
-                    itemBuilder: context,index){},)
-                    ],),
                   ),
-                  
-                
                 ],
               ),
             );
